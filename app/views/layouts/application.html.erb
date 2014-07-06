@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RoRBlackbelt</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,500,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id="header">
+	<div id="header-bar">
+		<a href="<%= new_user_path %>"><h1>Bright<span>Ideas</span></h1></a>
+	</div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

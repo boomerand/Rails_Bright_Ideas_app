@@ -1,0 +1,39 @@
+<div id="container">
+	<div id="welcome-header">
+		<h2>Log in or sign up for an account</h2>
+		<% if flash[:notice] %>
+			<p class="success-msg"><%= flash[:notice] %></p>
+		<% end %>
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |error| %>
+				<p class="error-msg"><%= error %></p>
+			<% end %>
+		<% end %>
+		<% if flash[:error]%>
+			<p class="error-msg"><%= flash[:error] %></p>
+		<% end %>
+	</div>
+
+	<div id="left" class="form">
+		<h3>New Users</h3>
+		<%= form_for(@user) do |f| %>
+			<%= f.text_field :name, :placeholder => 'Enter name' %>
+			<%= f.text_field :alias, :placeholder => 'Enter username' %>
+			<%= f.email_field :email, :placeholder => 'Enter email address' %>
+			<%= f.password_field :password, :placeholder => 'Enter password' %>
+			<%= f.label :password_confirmation, "Password must be at least 8 characters" %>
+			<%= f.password_field :password_confirmation, :placeholder => 'Confirm password' %>
+			<%= f.submit "Create account!" %>
+		<% end %>
+	</div>
+
+	<div id="right" class="form">
+		<h3>Returning Users</h3>
+		<%= form_tag ({ controller: 'sessions', action: 'create' }) do %>
+			<%= email_field_tag :email, nil,  :placeholder => 'Enter email address' %>
+			<%= password_field_tag :password, nil, :placeholder => 'Enter password' %>
+			<%= submit_tag "Log in!" %>
+		<% end %>
+		
+	</div>
+</div>

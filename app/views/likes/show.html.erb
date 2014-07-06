@@ -1,0 +1,31 @@
+<div id="container">
+	<div id="welcome-header">
+		<h2>Idea Profile</h2>
+		<p class="logout"><a href="<%= idea_path(session[:user_id]) %>">Back to Ideas</a>&nbsp; | &nbsp;<a data-method="delete" href="<%= session_path(session) %>">Log out</a></p>
+	</div>
+
+	<div id="content-1">
+		<h4><a href="<%= user_path(@idea.user.id) %>"><%= @idea.user.alias %></a> <span>says:</span></h4>
+		<p class="idea-desc">"<%= @idea.description %>"</p>
+	</div>	
+
+	<div id="like-table">
+		<h4>People who liked this post</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Alias</th>
+						<th>Name</th>
+					</tr>
+				</thead>
+			<% @likes.each do |like| %>
+				<tbody>
+					<tr>
+						<td><a href="<%= user_path(like.user) %>"><%= like.user.alias %></a></td>
+						<td><%= like.user.name %></td>
+					</tr>
+				</tbody>
+			<% end %>
+		</table>
+	</div>
+</div>

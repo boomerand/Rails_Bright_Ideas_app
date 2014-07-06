@@ -1,0 +1,23 @@
+<div id="container">
+	<div id="welcome-header">
+		<h2>Profile Information</h2>
+		<p class="logout"><a href="<%= idea_path(session[:user_id]) %>">Back to Ideas</a>&nbsp; | &nbsp;<a data-method="delete" href="<%= session_path(session) %>">Log out</a></p>
+	</div>
+
+	<div id="user-info">
+		<h3>Name: <span><%= @user.name %></spam></h3>
+		<h3>Username: <span><%= @user.alias %></spam></h3>
+		<h3>Email: <span><%= @user.email %></spam></h3>
+	</div>
+
+	<div id="user-stats">
+		<h4>Total number of posts: <span><%= @ideas.count %></spam></h4>
+		<h4>Total number of likes: 
+			<% if @likes %>
+				<span><%= @likes.count %></span>
+			<% else %>
+				<span>0</span>
+			<% end %>
+		</h4>
+	</div>
+</div>
